@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Unikk</string>
+    <string name="lbl_special_pattern">Caracteres Especiais</string>
+    <string name="lbl_lower_alpha_pattern">Alfabeto Minúsculo</string>
+    <string name="lbl_lower_latin_alpha_pattern">Alfabeto Acentuado Minúsculo</string>
+    <string name="lbl_upper_latin_pattern">Alfabeto Maiúsculo</string>
+    <string name="lbl_upper_latin_alpha_pattern">Alfabeto Acentuado Maiúsculo</string>
+    <string name="lbl_numeric_pattern">Numerais</string>
+</resources>
