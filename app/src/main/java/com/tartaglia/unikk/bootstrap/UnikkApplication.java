@@ -21,18 +21,6 @@ public class UnikkApplication extends Application {
 
   @Override
   public void onCreate() {
-    Log.d("APPLICATION", "APP  CREATE");
     super.onCreate();
-    UnikkDatabase db = UnikkDatabaseBootstrap.getRoomDatabase(this);
-    db.textPatternDao()
-      .findAll()
-      .subscribeOn(Schedulers.io())
-      .observeOn(AndroidSchedulers.mainThread())
-      .subscribe(new SingleAdapter<List<TextPattern>>() {
-        @Override
-        public void onSuccess(List<TextPattern> textPatterns) {
-          Log.i("APP", Arrays.toString(textPatterns.toArray()));
-        }
-      });
   }
 }

@@ -44,7 +44,6 @@ public final class TextPattern {
     return name;
   }
 
-
   char[] getPattern() {
     return pattern;
   }

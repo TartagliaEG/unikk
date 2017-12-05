@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Unikk.iml" filepath="$PROJECT_DIR$/Unikk.iml" />
+      <module fileurl="file://C:\Users\tartagle\dev\EWorkspace\unikk\Unikk.iml" filepath="C:\Users\tartagle\dev\EWorkspace\unikk\Unikk.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\tartagle\dev\EWorkspace\unikk\app\app.iml" filepath="C:\Users\tartagle\dev\EWorkspace\unikk\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/unikk.iml" filepath="$PROJECT_DIR$/unikk.iml" />
     </modules>
   </component>
 </project>
