@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.rx_utils;
+package com.tartaglia.unikk.rx.utils;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;

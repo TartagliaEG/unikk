@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.room;
+package com.tartaglia.unikk.bootstrap.room;
 
 import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;

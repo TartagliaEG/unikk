@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.room.converter;
+package com.tartaglia.unikk.bootstrap.room.converter;
 
 import android.arch.persistence.room.TypeConverter;
 

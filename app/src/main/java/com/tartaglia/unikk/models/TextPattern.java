@@ -5,7 +5,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
-import com.tartaglia.unikk.room.converter.CharArray;
+import com.tartaglia.unikk.bootstrap.room.converter.CharArray;
 
 import java.util.Arrays;
 

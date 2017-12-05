@@ -1,6 +1,7 @@
 package com.tartaglia.unikk.bootstrap;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,9 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tartaglia.unikk.MainActivity;
+import com.tartaglia.unikk.bootstrap.room.UnikkDatabaseBootstrap;
 import com.tartaglia.unikk.models.None;
-import com.tartaglia.unikk.room.UnikkDatabaseBootstrap;
-import com.tartaglia.unikk.rx_utils.ObserverAdapter;
+import com.tartaglia.unikk.rx.utils.ObserverAdapter;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -23,21 +27,30 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by tartagle on 05/12/2017.
  */
-public class SplashActivity extends AppCompatActivity {
-  private static final String PREFS_NAME = SplashActivity.class.getName() + ".PREFS";
-  private static final String PREFS_IS_FIRST_RUNS = SplashActivity.class.getName() + ".IS_FIRST_RUN";
-  private static final String TAG = SplashActivity.class.getName();
+public class BootstrapSplashActivity extends AppCompatActivity {
+  private static final String PREFS_IS_FIRST_RUNS = BootstrapSplashActivity.class.getName() + ".IS_FIRST_RUN";
+  private static final String TAG = BootstrapSplashActivity.class.getName();
 
   private Bootstrap mDatabase;
-  private SharedPreferences mPrefs;
+  @Inject
+  SharedPreferences mPrefs;
+  @Inject
+  Application mApp;
+
   private Disposable mDisposable;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+
+
+    //((BootstrapUnikkApplication) getApplication())
+    //  .getAppComponent()
+    //  .newBootstrapSplashActivityComponent(new BootstrapSplashActivityModule());
+      //.inject(this);
+
     mDatabase = new UnikkDatabaseBootstrap(getApplicationContext());
-    mPrefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
   }
 
   @Override
@@ -60,7 +73,7 @@ public class SplashActivity extends AppCompatActivity {
 
         @Override
         public void onNext(None none) {
-          Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+          Intent intent = new Intent(BootstrapSplashActivity.this, MainActivity.class);
           startActivity(intent);
           finish();
         }
