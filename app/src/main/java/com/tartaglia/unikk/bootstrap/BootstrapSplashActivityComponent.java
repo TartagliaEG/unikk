@@ -12,7 +12,8 @@ import dagger.Subcomponent;
 @PerActivityScope
 @Subcomponent(modules = BootstrapSplashActivityModule.class)
 public interface BootstrapSplashActivityComponent {
-  //void inject(BootstrapSplashActivity activity);
+  void inject(BootstrapSplashActivity activity);
+
   @Named("test")
-  String test();
+  TestObject test();
 }

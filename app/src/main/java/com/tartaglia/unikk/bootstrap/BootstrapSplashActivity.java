@@ -36,6 +36,9 @@ public class BootstrapSplashActivity extends AppCompatActivity {
   SharedPreferences mPrefs;
   @Inject
   Application mApp;
+  @Inject
+  @Named("test")
+  TestObject test;
 
   private Disposable mDisposable;
 
@@ -43,13 +46,12 @@ public class BootstrapSplashActivity extends AppCompatActivity {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    ((BootstrapUnikkApplication) getApplication())
+      .getAppComponent()
+      .plusBootstrapSplashActivityComponent(new BootstrapSplashActivityModule())
+      .inject(this);
 
-
-    //((BootstrapUnikkApplication) getApplication())
-    //  .getAppComponent()
-    //  .newBootstrapSplashActivityComponent(new BootstrapSplashActivityModule());
-      //.inject(this);
-
+    Log.i(TAG, "" + test);
     mDatabase = new UnikkDatabaseBootstrap(getApplicationContext());
   }
 
@@ -74,8 +76,8 @@ public class BootstrapSplashActivity extends AppCompatActivity {
         @Override
         public void onNext(None none) {
           Intent intent = new Intent(BootstrapSplashActivity.this, MainActivity.class);
-          startActivity(intent);
-          finish();
+          //startActivity(intent);
+          //finish();
         }
       });
   }

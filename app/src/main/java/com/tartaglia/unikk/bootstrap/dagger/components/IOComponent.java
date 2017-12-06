@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.tartaglia.unikk.bootstrap.dagger.modules.AppModule;
 import com.tartaglia.unikk.bootstrap.dagger.modules.IOModule;
+import com.tartaglia.unikk.bootstrap.room.UnikkDatabase;
 
 import javax.inject.Singleton;
 
@@ -18,5 +19,8 @@ import dagger.Component;
 public interface IOComponent {
   SharedPreferences applicationSharedPreferences();
 
+  UnikkDatabase unikkDatabase();
+
   Application application();
+
 }

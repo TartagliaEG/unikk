@@ -2,8 +2,6 @@ package com.tartaglia.unikk.bootstrap.dagger.modules;
 
 import android.app.Application;
 
-import com.tartaglia.unikk.bootstrap.BootstrapUnikkApplication;
-
 import javax.inject.Singleton;
 
 import dagger.Module;

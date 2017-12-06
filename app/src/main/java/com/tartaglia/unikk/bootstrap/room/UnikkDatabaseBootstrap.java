@@ -16,6 +16,9 @@ import com.tartaglia.unikk.models.TextPatternDao;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
@@ -23,6 +26,7 @@ import io.reactivex.functions.Function;
 /**
  * Created by Tartaglia on 04/12/2017.
  */
+@Singleton
 public class UnikkDatabaseBootstrap implements Bootstrap {
   private static final String PREFS_IS_FIRST_RUN = UnikkDatabaseBootstrap.class.getName() + ".IS_FIRST_RUN";
   private static final String TAG = UnikkDatabaseBootstrap.class.getName();
@@ -31,6 +35,7 @@ public class UnikkDatabaseBootstrap implements Bootstrap {
   private Context context;
   private UnikkDatabase db;
 
+  @Inject
   public UnikkDatabaseBootstrap(@NonNull Context context) {
     this.context = context.getApplicationContext();
   }
