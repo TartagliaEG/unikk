@@ -17,19 +17,13 @@ import dagger.Provides;
  */
 
 @Module
-public class IOModule {
+public class PrefsModule {
   private static final String PREFS_APPLICATION = "UNIKK_APPLICATION.PREFS";
 
   @Singleton
   @Provides
   public SharedPreferences providesApplicationSharedPreferences(Application application) {
     return application.getSharedPreferences(PREFS_APPLICATION, Context.MODE_PRIVATE);
-  }
-
-  @Singleton
-  @Provides
-  public UnikkDatabase providesUnikkDatabase(UnikkDatabaseBootstrap unikkDatabaseBootstrap) {
-    return unikkDatabaseBootstrap.getRoomDatabase();
   }
 
 }

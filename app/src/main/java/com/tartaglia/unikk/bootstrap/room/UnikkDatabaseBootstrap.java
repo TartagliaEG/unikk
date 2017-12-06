@@ -1,6 +1,7 @@
 package com.tartaglia.unikk.bootstrap.room;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -28,16 +29,16 @@ import io.reactivex.functions.Function;
  */
 @Singleton
 public class UnikkDatabaseBootstrap implements Bootstrap {
+  static final int DATABASE_VERSION = 1;
   private static final String PREFS_IS_FIRST_RUN = UnikkDatabaseBootstrap.class.getName() + ".IS_FIRST_RUN";
   private static final String TAG = UnikkDatabaseBootstrap.class.getName();
   private static final String DATABASE_NAME = "UNIKK.DATABASE";
-  static final int DATABASE_VERSION = 1;
   private Context context;
   private UnikkDatabase db;
 
   @Inject
-  public UnikkDatabaseBootstrap(@NonNull Context context) {
-    this.context = context.getApplicationContext();
+  public UnikkDatabaseBootstrap(@NonNull Application application) {
+    this.context = application.getApplicationContext();
   }
 
   public UnikkDatabase getRoomDatabase() {

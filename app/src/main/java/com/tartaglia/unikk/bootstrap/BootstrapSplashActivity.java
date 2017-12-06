@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tartaglia.unikk.MainActivity;
+import com.tartaglia.unikk.bootstrap.room.UnikkDatabase;
 import com.tartaglia.unikk.bootstrap.room.UnikkDatabaseBootstrap;
 import com.tartaglia.unikk.models.None;
 import com.tartaglia.unikk.rx.utils.ObserverAdapter;
@@ -31,11 +32,14 @@ public class BootstrapSplashActivity extends AppCompatActivity {
   private static final String PREFS_IS_FIRST_RUNS = BootstrapSplashActivity.class.getName() + ".IS_FIRST_RUN";
   private static final String TAG = BootstrapSplashActivity.class.getName();
 
-  private Bootstrap mDatabase;
+  @Inject
+  UnikkDatabaseBootstrap mDatabase;
   @Inject
   SharedPreferences mPrefs;
   @Inject
   Application mApp;
+  @Inject
+  UnikkDatabase db;
   @Inject
   @Named("test")
   TestObject test;
@@ -51,8 +55,6 @@ public class BootstrapSplashActivity extends AppCompatActivity {
       .plusBootstrapSplashActivityComponent(new BootstrapSplashActivityModule())
       .inject(this);
 
-    Log.i(TAG, "" + test);
-    mDatabase = new UnikkDatabaseBootstrap(getApplicationContext());
   }
 
   @Override
