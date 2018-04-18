@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="lbl_text_pattern_special_characters">Caracteres Especiais</string>
+
+  <string name="lbl_text_pattern_lowercase_default">Alfabeto Minúsculo</string>
+  <string name="lbl_text_pattern_uppercase_default">Alfabeto Maiúsculo</string>
+
+  <string name="lbl_text_pattern_lowercase_local">Alfabeto Minúsculo Localizado</string>
+  <string name="lbl_text_pattern_uppercase_local">Alfabeto Maiúsculo Localizado</string>
+
+  <string name="lbl_text_pattern_numeric">Numerais</string>
+
+  <string name="val_text_pattern_lowercase_local">abcdefghijklmnopqrstuvwxyzáéíóúâêôüàãõç</string>
+  <string name="val_text_pattern_uppercase_local">ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÂÊÔÜÀÃÕÇ</string>
+</resources>

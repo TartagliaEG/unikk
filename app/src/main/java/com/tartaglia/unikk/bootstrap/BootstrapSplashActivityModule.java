@@ -1,6 +1,6 @@
 package com.tartaglia.unikk.bootstrap;
 
-import com.tartaglia.unikk.bootstrap.dagger.scopes.PerActivityScope;
+import com.tartaglia.unikk.bootstrap.dagger.scopes.ActivityScope;
 
 import javax.inject.Named;
 
@@ -14,10 +14,10 @@ import dagger.Provides;
 @Module
 public class BootstrapSplashActivityModule {
 
-  @PerActivityScope
-  @Provides
-  @Named("test")
-  public TestObject test() {
-    return new TestObject();
-  }
+//  @ActivityScope
+//  @Provides
+//  @Named("test")
+//  public TestObject test() {
+//    return new TestObject();
+//  }
 }

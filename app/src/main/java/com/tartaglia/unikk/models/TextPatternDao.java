@@ -15,7 +15,7 @@ import io.reactivex.Single;
  */
 @Dao
 public abstract class TextPatternDao {
-  @Query("SELECT * FROM TEXT_PATTERN WHERE id = :id")
+  @Query("SELECT * FROM TEXT_PATTERN WHERE mId = :id")
   public abstract Single<TextPattern> findOne(String id);
 
   @Query("SELECT * FROM TEXT_PATTERN")

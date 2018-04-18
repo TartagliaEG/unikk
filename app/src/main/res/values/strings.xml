@@ -1,9 +1,21 @@
 <resources>
-    <string name="app_name">Unikk</string>
-    <string name="lbl_special_pattern">Caracteres Especiais</string>
-    <string name="lbl_lower_alpha_pattern">Alfabeto Minúsculo</string>
-    <string name="lbl_lower_latin_alpha_pattern">Alfabeto Acentuado Minúsculo</string>
-    <string name="lbl_upper_latin_pattern">Alfabeto Maiúsculo</string>
-    <string name="lbl_upper_latin_alpha_pattern">Alfabeto Acentuado Maiúsculo</string>
-    <string name="lbl_numeric_pattern">Numerais</string>
+  <string name="lbl_application_name">Unikk</string>
+
+  <string name="lbl_text_pattern_special_characters">Special Characters</string>
+  <string name="val_text_pattern_special_characters">!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</string>
+
+  <string name="lbl_text_pattern_lowercase_default">Lowercase Alphabet</string>
+  <string name="val_text_pattern_lowercase_default">abcdefghijklmnopqrstuvwxyz</string>
+
+  <string name="lbl_text_pattern_uppercase_default">Uppercase Alphabet</string>
+  <string name="val_text_pattern_uppercase_default">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+  <string name="lbl_text_pattern_lowercase_local">Localized Lowercase Alphabet</string>
+  <string name="val_text_pattern_lowercase_local">abcdefghijklmnopqrstuvwxyz</string>
+
+  <string name="lbl_text_pattern_uppercase_local">Localized Uppercase Alphabet</string>
+  <string name="val_text_pattern_uppercase_local">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+  <string name="lbl_text_pattern_numeric">Numerals</string>
+  <string name="val_text_pattern_numeric">0123456789</string>
 </resources>

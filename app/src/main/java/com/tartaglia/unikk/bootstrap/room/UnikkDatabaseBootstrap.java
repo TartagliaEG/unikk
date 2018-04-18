@@ -4,21 +4,21 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.tartaglia.unikk.R;
-import com.tartaglia.unikk.bootstrap.Bootstrap;
+import com.tartaglia.unikk.bootstrap.BootstrapContract;
+import com.tartaglia.unikk.bootstrap.dagger.scopes.ApplicationScope;
 import com.tartaglia.unikk.models.None;
 import com.tartaglia.unikk.models.TextPattern;
 import com.tartaglia.unikk.models.TextPatternDao;
+import com.tartaglia.unikk.models.key_value_storage.KeyValueStorageContract;
 
 import java.util.UUID;
 import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -27,39 +27,45 @@ import io.reactivex.functions.Function;
 /**
  * Created by Tartaglia on 04/12/2017.
  */
-@Singleton
-public class UnikkDatabaseBootstrap implements Bootstrap {
+@ApplicationScope
+public class UnikkDatabaseBootstrap implements BootstrapContract {
   static final int DATABASE_VERSION = 1;
   private static final String PREFS_IS_FIRST_RUN = UnikkDatabaseBootstrap.class.getName() + ".IS_FIRST_RUN";
   private static final String TAG = UnikkDatabaseBootstrap.class.getName();
   private static final String DATABASE_NAME = "UNIKK.DATABASE";
-  private Context context;
-  private UnikkDatabase db;
+  private final KeyValueStorageContract mStorage;
+
+  private Context mContext;
+  private UnikkDatabase mDb;
 
   @Inject
-  public UnikkDatabaseBootstrap(@NonNull Application application) {
-    this.context = application.getApplicationContext();
+  public UnikkDatabaseBootstrap(
+    @NonNull Application application,
+    @ApplicationScope KeyValueStorageContract storage) {
+
+    mContext = application.getApplicationContext();
+    mStorage = storage;
   }
 
   public UnikkDatabase getRoomDatabase() {
-    if (db != null)
-      return db;
+    if (mDb != null)
+      return mDb;
 
-    db = Room
-      .databaseBuilder(context, UnikkDatabase.class, DATABASE_NAME)
+    mDb = Room
+      .databaseBuilder(mContext, UnikkDatabase.class, DATABASE_NAME)
       .build();
 
-    return db;
+    return mDb;
   }
 
   @Override
-  public Observable<None> onBoot(SharedPreferences prefs) {
+  public Observable<None> onBoot() {
     return Observable.just(None.NONE);
   }
 
   @Override
-  public Observable<None> onFirstBoot(final SharedPreferences prefs) {
-    if (!prefs.getBoolean(PREFS_IS_FIRST_RUN, true)) {
+  public Observable<None> onFirstBoot() {
+    if (!mStorage.getBoolean(PREFS_IS_FIRST_RUN, true)) {
       Log.i(TAG, "Unikk database was configured already.");
       return Observable.just(None.NONE);
     }
@@ -72,33 +78,33 @@ public class UnikkDatabaseBootstrap implements Bootstrap {
         return new TextPattern[]{
           new TextPattern(
             UUID.randomUUID().toString(),
-            context.getString(R.string.lbl_special_pattern),
-            "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".toCharArray()
+            mContext.getResources().getString(R.string.lbl_text_pattern_special_characters),
+            mContext.getResources().getString(R.string.val_text_pattern_special_characters).toCharArray()
           ),
           new TextPattern(
             UUID.randomUUID().toString(),
-            context.getString(R.string.lbl_lower_alpha_pattern),
-            "abcdefghijklmnopqrstuvwxyz".toCharArray()
+            mContext.getResources().getString(R.string.lbl_text_pattern_lowercase_default),
+            mContext.getResources().getString(R.string.val_text_pattern_lowercase_default).toCharArray()
           ),
           new TextPattern(
             UUID.randomUUID().toString(),
-            context.getString(R.string.lbl_lower_latin_alpha_pattern),
-            "abcdefghijklmnopqrstuvwxyzáéíóúâêôüàãõç".toCharArray()
+            mContext.getString(R.string.lbl_text_pattern_uppercase_default),
+            mContext.getResources().getString(R.string.val_text_pattern_uppercase_default).toCharArray()
           ),
           new TextPattern(
             UUID.randomUUID().toString(),
-            context.getString(R.string.lbl_upper_latin_pattern),
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray()
+            mContext.getResources().getString(R.string.lbl_text_pattern_lowercase_local),
+            mContext.getResources().getString(R.string.val_text_pattern_lowercase_local).toCharArray()
           ),
           new TextPattern(
             UUID.randomUUID().toString(),
-            context.getString(R.string.lbl_upper_latin_alpha_pattern),
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÂÊÔÜÀÃÕÇ".toCharArray()
+            mContext.getResources().getString(R.string.lbl_text_pattern_uppercase_local),
+            mContext.getResources().getString(R.string.val_text_pattern_uppercase_local).toCharArray()
           ),
           new TextPattern(
             UUID.randomUUID().toString(),
-            context.getString(R.string.lbl_numeric_pattern),
-            "0123456789".toCharArray()
+            mContext.getResources().getString(R.string.lbl_text_pattern_numeric),
+            mContext.getResources().getString(R.string.val_text_pattern_numeric).toCharArray()
           )};
 
       }
@@ -114,7 +120,7 @@ public class UnikkDatabaseBootstrap implements Bootstrap {
       @SuppressLint("ApplySharedPref")
       @Override
       public ObservableSource<None> apply(None none) throws Exception {
-        prefs.edit().putBoolean(PREFS_IS_FIRST_RUN, false).commit();
+        mStorage.beginTransaction().putBoolean(PREFS_IS_FIRST_RUN, false).commit();
         Log.i(TAG, "First run database configuration done.");
         return Observable.just(None.NONE);
       }

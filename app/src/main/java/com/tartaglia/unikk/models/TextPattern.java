@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import com.tartaglia.unikk.bootstrap.room.converter.CharArray;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Tartaglia on 04/12/2017.
@@ -16,39 +18,71 @@ import java.util.Arrays;
 public final class TextPattern {
   @PrimaryKey
   @NonNull
-  private final String id;
-  private final String name;
+  private final String mId;
+  private final String mName;
   @TypeConverters(value = CharArray.class)
-  private final char[] pattern;
+  private final char[] mPattern;
 
   @Override
   public String toString() {
     return "TextPatternRoom{" +
-      "id='" + id + '\'' +
-      ", name='" + name + '\'' +
-      ", pattern=" + Arrays.toString(pattern) +
+      "id='" + mId + '\'' +
+      ", name='" + mName + '\'' +
+      ", pattern=" + Arrays.toString(mPattern) +
       '}';
   }
 
-  public TextPattern(String id, String name, char[] pattern) {
-    this.id = id;
-    this.name = name;
-    this.pattern = pattern;
+  public TextPattern(@NonNull String id, @NonNull String name, @NonNull char[] pattern) {
+    mId = id;
+    mName = name;
+    mPattern = pattern;
+    
+    validatePattern();
+  }
+
+  public TextPattern(@NonNull String id, @NonNull String name, @NonNull TextPattern... patterns) {
+    mId = id;
+    mName = name;
+
+    Set<Character> patternSet = new HashSet<>();
+
+    // Add all characters to a set to remove the duplicated occurrences
+    for (TextPattern textPattern : patterns) {
+      char[] pattern = textPattern.getPattern();
+
+      for (char c : pattern)
+        patternSet.add(c);
+    }
+
+    char[] pattern = new char[patternSet.size()];
+    int characterIndex = 0;
+
+    for (Character c : patternSet)
+      pattern[characterIndex++] = c;
+
+
+    mPattern = pattern;
+    validatePattern();
+  }
+
+  private void validatePattern() {
+    if (mPattern.length == 0)
+      throw new IllegalStateException("The pattern cannot be empty");
   }
 
   public String getId() {
-    return id;
+    return mId;
   }
 
   public String getName() {
-    return name;
+    return mName;
   }
 
   char[] getPattern() {
-    return pattern;
+    return mPattern;
   }
 
   public int size() {
-    return pattern.length;
+    return mPattern.length;
   }
 }

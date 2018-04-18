@@ -1,19 +1,15 @@
 package com.tartaglia.unikk.bootstrap;
 
-import com.tartaglia.unikk.bootstrap.dagger.scopes.PerActivityScope;
-
-import javax.inject.Named;
+import com.tartaglia.unikk.bootstrap.dagger.scopes.ActivityScope;
 
 import dagger.Subcomponent;
 
 /**
  * Created by tartagle on 05/12/2017.
  */
-@PerActivityScope
+@ActivityScope
 @Subcomponent(modules = BootstrapSplashActivityModule.class)
 public interface BootstrapSplashActivityComponent {
   void inject(BootstrapSplashActivity activity);
 
-  @Named("test")
-  TestObject test();
 }

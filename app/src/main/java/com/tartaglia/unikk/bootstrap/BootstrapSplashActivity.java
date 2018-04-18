@@ -101,7 +101,7 @@ public class BootstrapSplashActivity extends AppCompatActivity {
     Log.i(TAG, "It's the first time the Unikk application is running. Starting the first run callback flow.");
 
     return mDatabase
-      .onFirstBoot(mPrefs)
+      .onFirstBoot()
       .flatMap(new Function<None, ObservableSource<None>>() {
         @SuppressLint("ApplySharedPref")
         @Override
@@ -113,6 +113,6 @@ public class BootstrapSplashActivity extends AppCompatActivity {
   }
 
   private Observable<None> runBoot() {
-    return mDatabase.onBoot(mPrefs);
+    return mDatabase.onBoot();
   }
 }
