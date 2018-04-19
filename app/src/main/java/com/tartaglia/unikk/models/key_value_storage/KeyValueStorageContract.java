@@ -34,4 +34,5 @@ public interface KeyValueStorageContract {
     void commit();
     void apply();
   }
+
 }

@@ -8,7 +8,7 @@ import io.reactivex.functions.Function;
 /**
  * Created by tartagle on 17/04/2018.
  */
-public class Sha512 implements TextHashHandler {
+public class Sha512 implements TextHashContract {
 
   public Single<String> hashText(String text) {
     return Single.just(text)

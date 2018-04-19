@@ -6,6 +6,6 @@ import io.reactivex.Single;
  * Created by tartagle on 17/04/2018.
  */
 
-public interface TextHashHandler {
+public interface TextHashContract {
   Single<String> hashText(String text);
 }

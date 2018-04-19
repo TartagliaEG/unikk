@@ -12,7 +12,7 @@ import com.tartaglia.unikk.models.NamedActivity;
 /**
  * Created by tartagle on 18/04/2018.
  */
-public abstract class SingleFragmentAppCompatActivity extends AppCompatActivity implements NamedActivity {
+public abstract class BaseAppCompatActivity extends AppCompatActivity implements NamedActivity {
   private String mUniqueName;
 
   protected abstract Fragment getMainFragment();
@@ -23,6 +23,7 @@ public abstract class SingleFragmentAppCompatActivity extends AppCompatActivity 
     setContentView(R.layout.act_single_fragment_root_container);
 
     mUniqueName = Utils.retrieveOrCreateName(this, savedInstanceState);
+
     FragmentManager fm = getSupportFragmentManager();
 
     if (fm.findFragmentById(R.id.act_sfrc_main_fragment_container) == null)

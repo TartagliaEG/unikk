@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.bootstrap;
+package com.tartaglia.unikk.use_cases.bootstrap;
 
 import android.content.SharedPreferences;
 

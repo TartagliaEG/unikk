@@ -1,13 +1,10 @@
 package com.tartaglia.unikk.models.principal;
 
 import com.tartaglia.unikk.models.None;
-import com.tartaglia.unikk.models.text_hash.TextHashHandler;
-import com.tartaglia.unikk.models.key_value_storage.KeyValueStorage;
 import com.tartaglia.unikk.models.key_value_storage.KeyValueStorageContract;
+import com.tartaglia.unikk.models.text_hash.TextHashContract;
 
 import java.util.UUID;
-
-import javax.inject.Inject;
 
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
@@ -20,11 +17,10 @@ public class PrincipalRepository implements PrincipalContract.Repository {
   private static final String TAG = PrincipalRepository.class.getName();
   private static final String SP_AUTHENTICATED = TAG + ".AUTHENTICATED.";
 
-  private final TextHashHandler mHashHandler;
+  private final TextHashContract mHashHandler;
   private final KeyValueStorageContract mStorage;
 
-  @Inject
-  public PrincipalRepository(KeyValueStorage storage, TextHashHandler hashHandler) {
+  public PrincipalRepository(KeyValueStorageContract storage, TextHashContract hashHandler) {
     mStorage = storage;
     mHashHandler = hashHandler;
   }

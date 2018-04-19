@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.bootstrap;
+package com.tartaglia.unikk.use_cases.bootstrap;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tartaglia.unikk.MainActivity;
+import com.tartaglia.unikk.bootstrap.UnikkApplication;
+import com.tartaglia.unikk.bootstrap.TestObject;
 import com.tartaglia.unikk.bootstrap.room.UnikkDatabase;
 import com.tartaglia.unikk.bootstrap.room.UnikkDatabaseBootstrap;
 import com.tartaglia.unikk.models.None;
@@ -50,10 +52,10 @@ public class BootstrapSplashActivity extends AppCompatActivity {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    ((BootstrapUnikkApplication) getApplication())
-      .getAppComponent()
-      .plusBootstrapSplashActivityComponent(new BootstrapSplashActivityModule())
-      .inject(this);
+//    ((UnikkApplication) getApplication())
+//      .getAppComponent()
+////      .plusBootstrapSplashActivityComponent(new BootstrapSplashActivityModule())
+//      .inject(this);
 
   }
 

@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.tartaglia.unikk.R;
-import com.tartaglia.unikk.bootstrap.BootstrapContract;
+import com.tartaglia.unikk.use_cases.bootstrap.BootstrapContract;
 import com.tartaglia.unikk.bootstrap.dagger.scopes.ApplicationScope;
 import com.tartaglia.unikk.models.None;
 import com.tartaglia.unikk.models.TextPattern;

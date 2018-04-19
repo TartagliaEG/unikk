@@ -21,9 +21,9 @@ import java.util.Map;
  * associated activity will be destructed definitely. It means that the cache will survive
  * configuration changes.
  */
-public class MemoryCache implements Application.ActivityLifecycleCallbacks, MemoryCacheContract, Parcelable {
+public class MemoryCache implements MemoryCacheContract, Parcelable {
   private static final String TAG = MemoryCache.class.getName();
-  private static final Map<String, Map<String, Object>> mMap = new HashMap<>();
+  private static final Map<String, Map<String, Object>> sMap = new HashMap<>();
   private String mKey;
 
   /**
@@ -47,9 +47,9 @@ public class MemoryCache implements Application.ActivityLifecycleCallbacks, Memo
 
 
   private void ensureKeyExistence(String key) {
-    if (!mMap.containsKey(key)) {
+    if (!sMap.containsKey(key)) {
       Log.d(TAG, "Creating a new HashMap instance for key: " + key);
-      mMap.put(key, new HashMap<String, Object>());
+      sMap.put(key, new HashMap<String, Object>());
       return;
     }
 
@@ -65,71 +65,67 @@ public class MemoryCache implements Application.ActivityLifecycleCallbacks, Memo
    *
    * @return Application.ActivityLifecycleCallbacks
    */
-  public static Application.ActivityLifecycleCallbacks getCallbacks() {
-    return new MemoryCache();
+  public static void registerLifecycleCallbacks(Application application) {
+    application.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+      @Override
+      public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+      }
+
+      @Override
+      public void onActivityStarted(Activity activity) {
+      }
+
+      @Override
+      public void onActivityResumed(Activity activity) {
+      }
+
+      @Override
+      public void onActivityPaused(Activity activity) {
+      }
+
+      @Override
+      public void onActivityStopped(Activity activity) {
+      }
+
+      @Override
+      public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+      }
+
+      @Override
+      public void onActivityDestroyed(Activity activity) {
+        if (activity.isFinishing() && activity instanceof NamedActivity) {
+          String key = ((NamedActivity) activity).getUniqueName() + ":" + activity.getClass().getName();
+          Map result = sMap.remove(key);
+
+          if (result != null)
+            Log.d(TAG, "Destroying HashMap associated with key: " + key);
+        }
+      }
+
+    });
   }
 
-  @Override
-  public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
-  }
-
-  @Override
-  public void onActivityStarted(Activity activity) {
-
-  }
-
-  @Override
-  public void onActivityResumed(Activity activity) {
-
-  }
-
-  @Override
-  public void onActivityPaused(Activity activity) {
-
-  }
-
-  @Override
-  public void onActivityStopped(Activity activity) {
-
-  }
-
-  @Override
-  public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
-  }
-
-  @Override
-  public void onActivityDestroyed(Activity activity) {
-    if (activity.isFinishing() && activity instanceof NamedActivity) {
-      String key = ((NamedActivity) activity).getUniqueName() + ":" + activity.getClass().getName();
-      Map result = mMap.remove(key);
-
-      if (result != null)
-        Log.d(TAG, "Destroying HashMap associated with key: " + key);
-    }
-  }
 
   @Override
   public void put(String key, Object value) {
-    mMap.get(mKey).put(key, value);
+    sMap.get(mKey).put(key, value);
   }
 
   @SuppressWarnings("unchecked")
   @Override
   public <T> T get(String key) {
-    return (T) mMap.get(mKey).get(key);
+    return (T) sMap.get(mKey).get(key);
   }
 
   @Override
   public boolean containsKey(String key) {
-    return mMap.get(mKey).containsKey(key);
+    return sMap.get(mKey).containsKey(key);
   }
 
   @SuppressWarnings("unchecked")
   @Override
   public <T> T remove(String key) {
-    return (T) mMap.get(mKey).remove(key);
+    return (T) sMap.get(mKey).remove(key);
   }
 
 
