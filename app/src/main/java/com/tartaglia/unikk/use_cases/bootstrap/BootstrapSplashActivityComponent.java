@@ -1,15 +1,29 @@
 package com.tartaglia.unikk.use_cases.bootstrap;
 
-import com.tartaglia.unikk.bootstrap.dagger.scopes.ActivityScope;
+import com.tartaglia.unikk.setup.di.scopes.PerActivityScope;
+import com.tartaglia.unikk.setup.room.UnikkDatabaseBootstrap;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import dagger.BindsInstance;
 import dagger.Subcomponent;
 
 /**
- * Created by tartagle on 05/12/2017.
+ * Created by Tartaglia E.G. on 01/05/18.
  */
-@ActivityScope
-@Subcomponent(modules = BootstrapSplashActivityModule.class)
+@PerActivityScope
+@Subcomponent()
 public interface BootstrapSplashActivityComponent {
   void inject(BootstrapSplashActivity activity);
+
+  BootstrapSplashActivity.Deps deps();
+
+  @Subcomponent.Builder
+  interface Builder {
+    @BindsInstance
+    Builder activity(BootstrapSplashActivity activity);
+    BootstrapSplashActivityComponent build();
+  }
 
 }

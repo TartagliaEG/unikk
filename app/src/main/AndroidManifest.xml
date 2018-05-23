@@ -3,7 +3,7 @@
     package="com.tartaglia.unikk">
 
     <application
-        android:name=".bootstrap.UnikkApplication"
+        android:name=".setup.application.UnikkApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/lbl_application_name"
