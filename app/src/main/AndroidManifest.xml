@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tartaglia.unikk">
+  package="com.tartaglia.unikk">
 
-    <application
-        android:name=".setup.application.UnikkApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/lbl_application_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"/>
-        <activity
-            android:name=".use_cases.bootstrap.BootstrapSplashActivity"
-            android:theme="@style/SplashTheme"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+  <application
+    android:name=".setup.application.UnikkApplication"
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/lbl_application_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/UnikkTheme">
+    <activity android:name=".MainActivity" />
+    <activity
+      android:name=".setup.bootstrap.BootstrapSplashActivity"
+      android:theme="@style/SplashTheme">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+      android:name=".use_cases.user_creation.AccountCreationActivity"
+      android:theme="@style/UnikkThemeNoActionBar" />
+  </application>
 
 </manifest>

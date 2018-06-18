@@ -10,8 +10,8 @@ import com.tartaglia.unikk.R;
 import com.tartaglia.unikk.domain.None;
 import com.tartaglia.unikk.domain.disk_cache.DiskCacheContract;
 import com.tartaglia.unikk.domain.text_pattern.TextPattern;
-import com.tartaglia.unikk.domain.text_pattern.TextPatternDao;
-import com.tartaglia.unikk.use_cases.bootstrap.BootstrapContract;
+import com.tartaglia.unikk.domain.text_pattern.TextPatternRepository;
+import com.tartaglia.unikk.setup.bootstrap.BootstrapContract;
 
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -34,15 +34,15 @@ public class UnikkDatabaseBootstrap implements BootstrapContract {
   private final DiskCacheContract mStorage;
 
   private Context mContext;
-  private UnikkDatabase mDb;
+  private TextPatternRepository mTextPatternRepository;
 
   @Inject
   UnikkDatabaseBootstrap(
     @NonNull Application application,
     @Singleton DiskCacheContract storage,
-    @Singleton UnikkDatabase db) {
+    @Singleton TextPatternRepository textPatternRepository) {
 
-    mDb = db;
+    mTextPatternRepository = textPatternRepository;
     mContext = application.getApplicationContext();
     mStorage = storage;
   }
@@ -96,9 +96,8 @@ public class UnikkDatabaseBootstrap implements BootstrapContract {
     }).flatMap(new Function<TextPattern[], SingleSource<None>>() {
       @Override
       public SingleSource<None> apply(TextPattern[] textPatterns) {
-        final TextPatternDao dao = mDb.textPatternDao();
         Log.i(TAG, "Persisting default text patterns. (" + textPatterns.length + ")");
-        return dao.saveAll(textPatterns);
+        return mTextPatternRepository.saveAll(textPatterns);
 
       }
     }).flatMap(new Function<None, SingleSource<None>>() {

@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.use_cases.bootstrap;
+package com.tartaglia.unikk.setup.bootstrap;
 
 import com.tartaglia.unikk.domain.None;
 

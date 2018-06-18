@@ -18,4 +18,15 @@
 
   <string name="lbl_text_pattern_numeric">Numerals</string>
   <string name="val_text_pattern_numeric">0123456789</string>
+
+  <string name="hint_account_identifier">Account name</string>
+  <string name="lbl_account_identifier_hint">This is your account identifier. It will be used to store your keys, preferences and backups.</string>
+  <string name="lbl_account_identifier_header">Give this account a name</string>
+
+  <string name="err_empty_account_name">You must give this account a name!</string>
+  <string name="lbl_account_password_header">Set a password for this account</string>
+
+  <string name="hint_account_password">Password</string>
+  <string name="lbl_account_password_hint">This password is used to access your account information. It isn\'t utterly necessary, but it gives an additional layer of protection to your account.</string>
+  <string name="lbl_account_password_unwanted">I do not want to set a password</string>
 </resources>

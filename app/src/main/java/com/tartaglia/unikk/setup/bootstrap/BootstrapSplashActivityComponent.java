@@ -1,10 +1,6 @@
-package com.tartaglia.unikk.use_cases.bootstrap;
+package com.tartaglia.unikk.setup.bootstrap;
 
 import com.tartaglia.unikk.setup.di.scopes.PerActivityScope;
-import com.tartaglia.unikk.setup.room.UnikkDatabaseBootstrap;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Subcomponent;

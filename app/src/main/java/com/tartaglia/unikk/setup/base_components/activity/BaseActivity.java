@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by tartagle on 18/04/2018.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+abstract class BaseActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {

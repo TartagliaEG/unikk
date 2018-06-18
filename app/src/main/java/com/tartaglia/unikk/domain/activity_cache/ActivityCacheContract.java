@@ -3,7 +3,7 @@ package com.tartaglia.unikk.domain.activity_cache;
 import android.os.Parcelable;
 
 /**
- * Created by tartaglia on 12/23/17.
+ * Created by Tartaglia E.G. on 12/23/17.
  * ...
  */
 public interface ActivityCacheContract extends Parcelable {

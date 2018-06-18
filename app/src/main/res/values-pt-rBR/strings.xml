@@ -12,4 +12,14 @@
 
   <string name="val_text_pattern_lowercase_local">abcdefghijklmnopqrstuvwxyzáéíóúâêôüàãõç</string>
   <string name="val_text_pattern_uppercase_local">ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÂÊÔÜÀÃÕÇ</string>
+
+  <string name="hint_account_identifier">Nome da conta</string>
+  <string name="hint_account_password">Senha</string>
+  <string name="lbl_account_identifier_hint">Este será o identificador da sua conta. Ele será usado para guardar suas chaves, preferências e backups.</string>
+  <string name="lbl_account_identifier_header">Dê um nome para esta conta</string>
+  <string name="err_empty_account_name" >Você precisa dar um nome para esta conta!</string>
+
+  <string name="lbl_account_password_header">Escolha uma senha para esta conta</string>
+  <string name="lbl_account_password_hint">This password is used to access your account information. It</string>
+
 </resources>

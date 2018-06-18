@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.tartaglia.unikk.domain.disk_cache.DiskCacheContract;
-import com.tartaglia.unikk.use_cases.bootstrap.BootstrapSplashActivityComponent;
+import com.tartaglia.unikk.setup.bootstrap.BootstrapSplashActivityComponent;
 
 import javax.inject.Singleton;
 
@@ -21,6 +21,7 @@ public interface UnikkApplicationComponent {
   void inject(UnikkApplication app);
   Context context();
   DiskCacheContract diskCache();
+
   BootstrapSplashActivityComponent.Builder bootstrapActivityComponent();
 
   @Component.Builder

@@ -12,11 +12,11 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Created by tartaglia on 04/18/17.
+ * Created by Tartaglia E.G. on 04/18/17.
  * <p>
  * This class is a map that stores arbitrary data that will exists during the activity lifespan.
- * It stores the data into a static map and cleans it up when the activity is being finished. This
- * cache survives through configuration changes.
+ * It stores the data into a static map and cleans it up when the activity is being finished.
+ * The cache survives through configuration changes.
  */
 public class ActivityCache implements ActivityCacheContract, Parcelable {
   private static final String TAG = ActivityCache.class.getName();

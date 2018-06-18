@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="UnikkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/main_bg</item>
+    <item name="colorPrimaryDark">@color/main_bg_strong</item>
+    <item name="colorAccent">@color/main_bg_suave</item>
+    <item name="android:navigationBarColor">@color/main_bg</item>
+    <item name="android:statusBarColor">@color/main_bg</item>
+  </style>
+</resources>

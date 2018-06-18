@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="inp_horizontal_margin">8dp</dimen>
+  <dimen name="inp_vertical_margin">8dp</dimen>
+  <dimen name="hdr_medium_text">20sp</dimen>
+
+  <dimen name="scr_spacing_x1">8dp</dimen>
+  <dimen name="scr_spacing_x2">16dp</dimen>
+  <dimen name="scr_spacing_x3">24dp</dimen>
+  <dimen name="scr_spacing_x4">32dp</dimen>
+  <dimen name="scr_spacing_x5">40dp</dimen>
+  <dimen name="scr_spacing_x6">48dp</dimen>
+  <dimen name="scr_spacing_x7">56dp</dimen>
+  <dimen name="scr_spacing_x8">64dp</dimen>
+
+</resources>
