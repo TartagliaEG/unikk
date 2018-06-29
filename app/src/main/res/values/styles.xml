@@ -14,7 +14,7 @@
     <item name="windowNoTitle">true</item>
   </style>
 
-  <style name="UnikkTextInputLayoutTheme" parent="TextAppearance.AppCompat">
+  <style name="UnikkTextInputLayoutTheme" parent="Widget.Design.TextInputLayout">
     <!-- Hint color and label color in FALSE viewModel -->
     <item name="android:textColorHint">@color/main_tx</item>
     <item name="android:textSize">20sp</item>

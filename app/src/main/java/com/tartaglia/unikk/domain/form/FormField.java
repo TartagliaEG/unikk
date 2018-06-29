@@ -60,7 +60,7 @@ public final class FormField<T> extends Property<T> {
   public final FormField<T> validate() {
 
     //noinspection unchecked
-    mPropertyValidationResult = mValidation.validate(this);
+    mPropertyValidationResult = mValidation.validate(mProperty);
 
     if (mProperty.hasChanged())
       mValidationListenersForModifiedFields.each(new ListenerList.Callback<FieldValidationListener>() {

@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.use_cases.user_creation.carousel.account_password;
+package com.tartaglia.unikk.use_cases.user_creation.wizard.account_password;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -11,6 +11,9 @@ public interface AccountPasswordDefinitionContract {
       super(context);
     }
 
+
+    public abstract void start(AccountPassDefinitionModel model, AccountPassDefinitionView.OnAccountPasswordDefinitionValidated validationListener);
+    public abstract void stop();
     abstract void formValidated(boolean isValid);
     abstract void passwordValidated(PropertyValidationResult result);
     abstract void showAccountPassword(String pass);
@@ -19,8 +22,9 @@ public interface AccountPasswordDefinitionContract {
   }
 
   abstract class IViewModel {
+    abstract void start(AccountPassDefinitionModel model);
+    abstract void stop();
     abstract void passwordChanged(String password);
     abstract void preferEmptyPasswordChanged(boolean preferEmpty);
-    abstract void start();
   }
 }

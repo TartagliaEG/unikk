@@ -29,4 +29,7 @@
   <string name="hint_account_password">Password</string>
   <string name="lbl_account_password_hint">This password is used to access your account information. It isn\'t utterly necessary, but it gives an additional layer of protection to your account.</string>
   <string name="lbl_account_password_unwanted">I do not want to set a password</string>
+
+  <string name="act_previous">Previous</string>
+  <string name="act_next">Next</string>
 </resources>

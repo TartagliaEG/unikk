@@ -21,5 +21,7 @@
 
   <string name="lbl_account_password_header">Escolha uma senha para esta conta</string>
   <string name="lbl_account_password_hint">This password is used to access your account information. It</string>
+  <string name="act_previous">Anterior</string>
+  <string name="act_next">Próximo</string>
 
 </resources>

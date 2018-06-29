@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.use_cases.user_creation.carousel.account_name;
+package com.tartaglia.unikk.use_cases.user_creation.wizard.account_name;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.use_cases.user_creation.carousel.account_password;
+package com.tartaglia.unikk.use_cases.user_creation.wizard.account_password;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import com.tartaglia.unikk.domain.form.property.PropertyString;
 import com.tartaglia.unikk.domain.form.property.PropertyValidation;
 import com.tartaglia.unikk.domain.form.property.PropertyValidationResult;
 
-public class AccountPasswordDefinitionModel implements Parcelable {
+public class AccountPassDefinitionModel implements Parcelable {
   private PropertyString mPassword = new PropertyString("");
   private PropertyBoolean mEmptyPassword = new PropertyBoolean(false);
 
@@ -53,23 +53,23 @@ public class AccountPasswordDefinitionModel implements Parcelable {
     dest.writeParcelable(this.mEmptyPassword, flags);
   }
 
-  public AccountPasswordDefinitionModel() {
+  public AccountPassDefinitionModel() {
   }
 
-  protected AccountPasswordDefinitionModel(Parcel in) {
+  protected AccountPassDefinitionModel(Parcel in) {
     this.mPassword = in.readParcelable(PropertyString.class.getClassLoader());
     this.mEmptyPassword = in.readParcelable(PropertyBoolean.class.getClassLoader());
   }
 
-  public static final Creator<AccountPasswordDefinitionModel> CREATOR = new Creator<AccountPasswordDefinitionModel>() {
+  public static final Creator<AccountPassDefinitionModel> CREATOR = new Creator<AccountPassDefinitionModel>() {
     @Override
-    public AccountPasswordDefinitionModel createFromParcel(Parcel source) {
-      return new AccountPasswordDefinitionModel(source);
+    public AccountPassDefinitionModel createFromParcel(Parcel source) {
+      return new AccountPassDefinitionModel(source);
     }
 
     @Override
-    public AccountPasswordDefinitionModel[] newArray(int size) {
-      return new AccountPasswordDefinitionModel[size];
+    public AccountPassDefinitionModel[] newArray(int size) {
+      return new AccountPassDefinitionModel[size];
     }
   };
 }

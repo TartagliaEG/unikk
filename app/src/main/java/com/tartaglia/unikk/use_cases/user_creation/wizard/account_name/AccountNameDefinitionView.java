@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.use_cases.user_creation.carousel.account_name;
+package com.tartaglia.unikk.use_cases.user_creation.wizard.account_name;
 
 import android.content.Context;
 import android.text.Editable;
@@ -14,29 +14,17 @@ import com.tartaglia.unikk.domain.form.property.PropertyValidationResult;
 
 public class AccountNameDefinitionView extends AccountNameDefinitionContract.IView implements AccountNameDefinitionContract {
   private final IViewModel mViewModel;
+
   private final EditText mEdtName;
 
-  private final OnAccountNameDefinitionSubmit mSubmitListener;
-  private final OnAccountNameDefinitionValidated mValidationListener;
 
-  public AccountNameDefinitionView(
-    Context context,
-    AccountNameDefinitionModel model,
-    OnAccountNameDefinitionSubmit submitListener,
-    OnAccountNameDefinitionValidated validationListener) {
+  private OnAccountNameDefinitionValidated mValidationListener;
 
+  public AccountNameDefinitionView(Context context) {
     super(context);
     LayoutInflater.from(context).inflate(R.layout.account_creation_name_definition_view, this, true);
 
-    mValidationListener = validationListener;
-    mSubmitListener = submitListener;
-    mEdtName = this.findViewById(R.id.acnd_edt_user_identifier);
-    mViewModel = new AccountNameDefinitionViewModel(this, model);
-
-    init(model);
-  }
-
-  private void init(AccountNameDefinitionModel model) {
+    mEdtName = findViewById(R.id.acnd_edt_user_identifier);
     mEdtName.addTextChangedListener(new TextWatcherAdapter() {
       @Override
       public void afterTextChanged(Editable editable) {
@@ -53,7 +41,18 @@ public class AccountNameDefinitionView extends AccountNameDefinitionContract.IVi
       }
     });
 
-    mViewModel.start();
+    mViewModel = new AccountNameDefinitionViewModel(this);
+  }
+
+  @Override
+  public void start(AccountNameDefinitionModel model, OnAccountNameDefinitionValidated validationListener) {
+    mValidationListener = validationListener;
+    mViewModel.start(model);
+  }
+
+  @Override
+  public void stop() {
+    mViewModel.stop();
   }
 
   @Override
@@ -72,14 +71,6 @@ public class AccountNameDefinitionView extends AccountNameDefinitionContract.IVi
     mValidationListener.onAccountNameDefinitionValidated(isValid);
   }
 
-  @Override
-  void submit() {
-    mSubmitListener.onAccountNameDefinitionSubmit(mViewModel);
-  }
-
-  public interface OnAccountNameDefinitionSubmit {
-    void onAccountNameDefinitionSubmit(AccountNameDefinitionContract.IViewModel state);
-  }
 
   public interface OnAccountNameDefinitionValidated {
     void onAccountNameDefinitionValidated(boolean isValid);
