@@ -2,7 +2,7 @@ package com.tartaglia.unikk.setup.application;
 
 import android.app.Application;
 
-import com.tartaglia.unikk.domain.activity_cache.ActivityCache;
+import com.tartaglia.unikk.lib.cache.memory.MemoryCache;
 
 /**
  * Created by Tartaglia E.G. on 04/12/2017.
@@ -14,7 +14,7 @@ public class UnikkApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
-    ActivityCache.registerLifecycleCallbacks(this);
+    MemoryCache.registerLifecycleCallbacks(this);
     mUnikkApplicationComponent = DaggerUnikkApplicationComponent
       .builder()
       .application(this)

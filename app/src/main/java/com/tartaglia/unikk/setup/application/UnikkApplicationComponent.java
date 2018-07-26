@@ -3,7 +3,7 @@ package com.tartaglia.unikk.setup.application;
 import android.app.Application;
 import android.content.Context;
 
-import com.tartaglia.unikk.domain.disk_cache.DiskCacheContract;
+import com.tartaglia.unikk.lib.cache.persistent.PersistentCacheContract;
 import com.tartaglia.unikk.setup.bootstrap.BootstrapSplashActivityComponent;
 
 import javax.inject.Singleton;
@@ -20,7 +20,7 @@ public interface UnikkApplicationComponent {
   //  void inject(BootstrapSplashActivity activity);
   void inject(UnikkApplication app);
   Context context();
-  DiskCacheContract diskCache();
+  PersistentCacheContract diskCache();
 
   BootstrapSplashActivityComponent.Builder bootstrapActivityComponent();
 

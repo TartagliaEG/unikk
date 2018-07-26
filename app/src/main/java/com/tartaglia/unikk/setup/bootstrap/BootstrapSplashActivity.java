@@ -7,11 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tartaglia.unikk.domain.None;
-import com.tartaglia.unikk.domain.rx.RxAdapters;
+import com.tartaglia.unikk.lib.rx.RxAdapters;
 import com.tartaglia.unikk.setup.application.UnikkApplication;
 import com.tartaglia.unikk.setup.di.scopes.PerActivityScope;
 import com.tartaglia.unikk.setup.room.UnikkDatabaseBootstrap;
-import com.tartaglia.unikk.use_cases.user_creation.AccountCreationActivity;
+import com.tartaglia.unikk.usecases.user_creation.AccountCreationActivity;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

@@ -8,9 +8,9 @@ import android.util.Log;
 
 import com.tartaglia.unikk.R;
 import com.tartaglia.unikk.domain.None;
-import com.tartaglia.unikk.domain.disk_cache.DiskCacheContract;
-import com.tartaglia.unikk.domain.text_pattern.TextPattern;
-import com.tartaglia.unikk.domain.text_pattern.TextPatternRepository;
+import com.tartaglia.unikk.domain.textpattern.TextPattern;
+import com.tartaglia.unikk.domain.textpattern.TextPatternRepository;
+import com.tartaglia.unikk.lib.cache.persistent.PersistentCacheContract;
 import com.tartaglia.unikk.setup.bootstrap.BootstrapContract;
 
 import java.util.UUID;
@@ -31,7 +31,7 @@ public class UnikkDatabaseBootstrap implements BootstrapContract {
   private static final String TAG = UnikkDatabaseBootstrap.class.getName();
 
   private static final String PREFS_IS_FIRST_RUN = UnikkDatabaseBootstrap.class.getName() + ".IS_FIRST_RUN";
-  private final DiskCacheContract mStorage;
+  private final PersistentCacheContract mStorage;
 
   private Context mContext;
   private TextPatternRepository mTextPatternRepository;
@@ -39,7 +39,7 @@ public class UnikkDatabaseBootstrap implements BootstrapContract {
   @Inject
   UnikkDatabaseBootstrap(
     @NonNull Application application,
-    @Singleton DiskCacheContract storage,
+    @Singleton PersistentCacheContract storage,
     @Singleton TextPatternRepository textPatternRepository) {
 
     mTextPatternRepository = textPatternRepository;

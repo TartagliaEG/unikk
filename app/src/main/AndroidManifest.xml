@@ -20,7 +20,7 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".use_cases.user_creation.AccountCreationActivity"
+      android:name=".usecases.user_creation.AccountCreationActivity"
       android:theme="@style/UnikkThemeNoActionBar" />
   </application>
 
