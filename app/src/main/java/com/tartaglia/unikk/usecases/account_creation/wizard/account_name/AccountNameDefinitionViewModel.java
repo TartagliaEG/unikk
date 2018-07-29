@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.usecases.user_creation.wizard.account_name;
+package com.tartaglia.unikk.usecases.account_creation.wizard.account_name;
 
 import com.tartaglia.unikk.lib.form.Form;
 import com.tartaglia.unikk.lib.form.FormField;

@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.usecases.user_creation.wizard.account_password;
+package com.tartaglia.unikk.usecases.account_creation.wizard.account_password;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;

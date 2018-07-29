@@ -1,8 +1,9 @@
-package com.tartaglia.unikk.usecases.user_creation.wizard;
+package com.tartaglia.unikk.usecases.account_creation.wizard;
 
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatButton;
@@ -16,12 +17,12 @@ import android.widget.LinearLayout;
 
 import com.tartaglia.unikk.R;
 import com.tartaglia.unikk.components.containers.LockableViewPager;
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_name.AccountNameDefinitionModel;
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_name.AccountNameDefinitionView;
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_name.AccountNameDefinitionView.OnAccountNameDefinitionValidated;
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_password.AccountPassDefinitionModel;
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_password.AccountPassDefinitionView;
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_password.AccountPassDefinitionView.OnAccountPasswordDefinitionValidated;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_name.AccountNameDefinitionModel;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_name.AccountNameDefinitionView;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_name.AccountNameDefinitionView.OnAccountNameDefinitionValidated;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_password.AccountPassDefinitionModel;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_password.AccountPassDefinitionView;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_password.AccountPassDefinitionView.OnAccountPasswordDefinitionValidated;
 
 public class AccountCreationWizard extends ConstraintLayout {
   private AppCompatButton mBtnNext;
@@ -53,6 +54,7 @@ public class AccountCreationWizard extends ConstraintLayout {
       }
     });
 
+
     mAdapter = new AccountCreationWizardAdapter(context);
     mAdapter.registerDataSetObserver(new DataSetObserver() {
       @Override
@@ -70,6 +72,12 @@ public class AccountCreationWizard extends ConstraintLayout {
       AppCompatTextView txt = (AppCompatTextView) LayoutInflater.from(getContext()).inflate(R.layout.cmp_wizard_page_number_view, mPageNumbers, false);
       txt.setText(Integer.toString(i + 1));
       mPageNumbers.addView(txt);
+
+      if (i == current) {
+        txt.setBackgroundResource(R.drawable.vc_oval);
+        txt.setTextColor(ContextCompat.getColor(getContext(), R.color.main_bg));
+      }
+
     }
 
   }

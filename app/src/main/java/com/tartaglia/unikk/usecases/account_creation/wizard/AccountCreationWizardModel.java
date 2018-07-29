@@ -1,10 +1,10 @@
-package com.tartaglia.unikk.usecases.user_creation.wizard;
+package com.tartaglia.unikk.usecases.account_creation.wizard;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_name.AccountNameDefinitionModel;
-import com.tartaglia.unikk.usecases.user_creation.wizard.account_password.AccountPassDefinitionModel;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_name.AccountNameDefinitionModel;
+import com.tartaglia.unikk.usecases.account_creation.wizard.account_password.AccountPassDefinitionModel;
 
 public class AccountCreationWizardModel implements Parcelable {
   private final AccountNameDefinitionModel mAccNameModel;

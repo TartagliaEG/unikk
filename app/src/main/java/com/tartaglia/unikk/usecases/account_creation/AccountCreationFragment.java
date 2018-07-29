@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.usecases.user_creation;
+package com.tartaglia.unikk.usecases.account_creation;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tartaglia.unikk.R;
-import com.tartaglia.unikk.usecases.user_creation.wizard.AccountCreationWizard;
-import com.tartaglia.unikk.usecases.user_creation.wizard.AccountCreationWizardModel;
+import com.tartaglia.unikk.usecases.account_creation.wizard.AccountCreationWizard;
+import com.tartaglia.unikk.usecases.account_creation.wizard.AccountCreationWizardModel;
 
 public class AccountCreationFragment extends Fragment {
   private AccountCreationWizard mWizard;

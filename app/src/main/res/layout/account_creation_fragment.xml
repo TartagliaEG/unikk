@@ -4,7 +4,7 @@
   android:layout_height="match_parent"
   android:background="@color/main_bg">
 
-  <com.tartaglia.unikk.usecases.user_creation.wizard.AccountCreationWizard
+  <com.tartaglia.unikk.usecases.account_creation.wizard.AccountCreationWizard
     android:id="@+id/acf_crs_carousel"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

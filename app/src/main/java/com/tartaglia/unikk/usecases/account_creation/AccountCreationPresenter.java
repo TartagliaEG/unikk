@@ -1,4 +1,4 @@
-package com.tartaglia.unikk.usecases.user_creation;
+package com.tartaglia.unikk.usecases.account_creation;
 
 public class AccountCreationPresenter {
 
